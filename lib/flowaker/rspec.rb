@@ -8,14 +8,14 @@ module Flowaker
 
     def step(description, &block)
       yield
-      reporter.example_passed StepExample.new(description)
+      reporter.example_passed StepExample.new(description, example.execution_result)
     end
 
     def reporter
       ::RSpec.configuration.reporter
     end
 
-    class StepExample < Struct.new(:description); end
+    class StepExample < Struct.new(:description, :execution_result); end
   end
 end
 
