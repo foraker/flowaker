@@ -1,3 +1,5 @@
+require 'delegate'
+
 module Flowaker
   module RSpec
     def self.included(base)
@@ -8,14 +10,21 @@ module Flowaker
 
     def step(description, &block)
       yield
-      reporter.example_passed StepExample.new(description, example.execution_result)
+      reporter.example_passed ::Flowaker::Example.new(description, example)
     end
 
     def reporter
       ::RSpec.configuration.reporter
     end
+  end
 
-    class StepExample < Struct.new(:description, :execution_result); end
+  class Example < SimpleDelegator
+    def initialize(description, example)
+      @description = description
+      super(example)
+    end
+
+    attr_reader :description
   end
 end
 
