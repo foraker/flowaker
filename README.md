@@ -10,7 +10,7 @@ Only RSpec is currently supported. Feel free to add support of additional testin
 
 Add this line to your application's Gemfile:
 
-    gem 'flowaker'
+    gem 'flowaker', require: false
 
 And then execute:
 
@@ -22,7 +22,7 @@ Or install it yourself as:
 
 Finally, in your spec helper, add:
 
-    require 'flowaker/rspec'
+    require 'flowaker'
 
 ## Usage
 
