@@ -10,21 +10,13 @@ module Flowaker
 
     def step(description, &block)
       yield
-      reporter.example_passed ::Flowaker::Example.new(description, example)
+      example = ::RSpec::Core::Example.new(self.class, description, {})
+      reporter.example_passed example
     end
 
     def reporter
       ::RSpec.configuration.reporter
     end
-  end
-
-  class Example < SimpleDelegator
-    def initialize(description, example)
-      @description = description
-      super(example)
-    end
-
-    attr_reader :description
   end
 end
 

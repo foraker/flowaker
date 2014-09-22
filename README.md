@@ -57,6 +57,10 @@ feature 'Posts', js: true do
 end
 ```
 
+## RSpec Versions
+
+If you're using RSpec 3, you'll need version 0.1.0 or higher. For previous versions of RSpec, please use version 0.0.2.
+
 ## Contributing
 
 1. Fork it
